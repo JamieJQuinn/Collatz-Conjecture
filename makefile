@@ -2,13 +2,13 @@ CC=g++
 CFLAGS=--std=c++0x
 INCLUDES=collatz.h
 
-all: threaded_collatz collatz
+all: serial threaded
 
-collatz: collatz.cpp $(INCLUDES)
-	$(CC) $(CFLAGS) -o $@ $<
+serial: collatz.cpp $(INCLUDES)
+	$(CC) $(CFLAGS) -DSERIAL -o $@ $<
 
-threaded_collatz: threaded_collatz.cpp $(INCLUDES)
-	$(CC) $(CFLAGS) -pthread -o $@ $<
+threaded: collatz.cpp $(INCLUDES)
+	$(CC) $(CFLAGS) -DTHREADED -pthread -o $@ $<
 
 clean:
-	rm collatz threaded_collatz
+	rm serial threaded
