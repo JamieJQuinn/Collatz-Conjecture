@@ -4,8 +4,7 @@
 
 typedef unsigned long long big_int;
 const big_int LARGEST_INT = big_int(0) - 1;
-const int OVERFLOW_ERROR = -1;
-const big_int upperLimit = 2e7;
+const big_int upperLimit = 1e7;
 const int N_THREADS = 4;
 
 int calcCollatzPathLength(big_int n) {
