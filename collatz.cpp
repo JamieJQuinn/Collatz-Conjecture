@@ -39,13 +39,11 @@ void maxCollatzPath(
 	maxPathLength=0;
 	maxN=0;
 
+#ifdef OMP_ENABLED
 #pragma omp parallel for
+#endif
   for(big_int i = N; i<M; ++i) {
 		int pathLength = calcCollatzPathLength(i);
-    //if (pathLength == OVERFLOW_ERROR) {
-      //std::cout << "Overflow from n=" << i << std::endl;
-      //return;
-    //}
 		if ( maxPathLength < pathLength ) {
 			maxPathLength=pathLength;
 			maxN=i;
@@ -59,14 +57,12 @@ void printMax(int maxPathLength, big_int maxN) {
     << std::endl;
 }
 
-#ifdef SERIAL
 void serialCollatz() {
 	int maxPathLength = 0;
   big_int maxN;
   maxCollatzPath(2, upperLimit, maxPathLength, maxN);
   printMax(maxPathLength, maxN);
 }
-#endif
 
 #ifdef THREADED
 void threadedCollatz() {
@@ -102,6 +98,9 @@ int main(int argc, char** args) {
 #endif
 #ifdef THREADED
   threadedCollatz();
+#endif
+#ifdef OMP_ENABLED
+  serialCollatz();
 #endif
 }
 

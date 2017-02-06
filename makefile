@@ -1,14 +1,17 @@
 CC=g++
 CFLAGS=--std=c++0x
-INCLUDES=collatz.h
+EXECS =serial threaded with_openmp
 
-all: serial threaded
+all: $(EXECS)
 
-serial: collatz.cpp $(INCLUDES)
+serial: collatz.cpp
 	$(CC) $(CFLAGS) -DSERIAL -o $@ $<
 
-threaded: collatz.cpp $(INCLUDES)
+threaded: collatz.cpp
 	$(CC) $(CFLAGS) -DTHREADED -pthread -o $@ $<
 
+with_openmp: collatz.cpp
+	$(CC) $(CFLAGS) -DOMP_ENABLED -o $@ $< -fopenmp
+
 clean:
-	rm serial threaded
+	rm $(EXECS)
