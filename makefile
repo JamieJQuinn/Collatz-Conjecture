@@ -1,13 +1,14 @@
-cc = g++ --std=c++0x
-THREAD_LIBS = -lboost_thread -lboost_system
+CC=g++
+CFLAGS=--std=c++0x
+INCLUDES=collatz.h
 
-all: collatzWithThreading collatz collatzWithCUDA
+all: threaded_collatz collatz
 
-collatz: collatz.cpp
-	$(cc) -o collatz collatz.cpp
+collatz: collatz.cpp $(INCLUDES)
+	$(CC) $(CFLAGS) -o $@ $<
 
-collatzWithThreading: collatzWithThreading.cpp
-	$(cc) -o collatzWithThreading collatzWithThreading.cpp $(THREAD_LIBS)
+threaded_collatz: threaded_collatz.cpp $(INCLUDES)
+	$(CC) $(CFLAGS) -pthread -o $@ $<
 
-collatzWithCUDA: collatzWithCUDA.cpp
-	touch collatzWithCUDA
+clean:
+	rm collatz threaded_collatz
