@@ -12,7 +12,7 @@ int calcCollatzPathLength(big_int n) {
 	int pathLength=0;
 	while(n>1) {
 		// check that n won't wrap around
-		if(n*3+1<n) return OVERFLOW_ERROR;
+		if(n*3+1<n) return -1;
 
 		// if n divides by 2, divide by 2, else times by 3 and add 1
 		if(n%2) {
