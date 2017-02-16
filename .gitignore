@@ -2,3 +2,4 @@ serial
 threaded
 .dropbox.attr
 with_openmp
+with_boost_compute
