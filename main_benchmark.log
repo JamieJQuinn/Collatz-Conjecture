@@ -1,0 +1,11 @@
+CPU: Intel(R) Core(TM) i5-2500K CPU @ 3.30GHz
+GPU: Nvidia GTX 570
+
+Benchmarking serial
+Average time: 5.30600000000000000000
+Benchmarking with_boost_compute
+Average time: .21400000000000000000
+Benchmarking threaded
+Average time: 1.59300000000000000000
+Benchmarking with_openmp
+Average time: 1.62000000000000000000
