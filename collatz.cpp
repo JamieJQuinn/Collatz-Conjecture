@@ -6,7 +6,6 @@
 
 #ifdef BOOST_COMPUTE_ENABLED
 #include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/algorithm/transform_reduce.hpp>
 #include <boost/compute/algorithm/transform.hpp>
 #include <boost/compute/container/vector.hpp>
 #include <boost/compute/algorithm/max_element.hpp>
