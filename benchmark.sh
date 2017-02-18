@@ -12,7 +12,6 @@ do
   total_time=0.0
   for i in `seq 1 10`;
   do
-    echo "run $i"
     run_time=$(/usr/bin/time 2>&1 -f '%e' ./$f > /dev/null)
     total_time=$(echo $total_time + $run_time | bc -l)
   done
