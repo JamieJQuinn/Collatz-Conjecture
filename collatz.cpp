@@ -109,7 +109,6 @@ void threaded() {
 namespace compute = boost::compute;
 
 BOOST_COMPUTE_FUNCTION(int, gpu_calc_stopping_time, (cl_ulong n), {
-  // Determines path length for Collatz sequence from n to 1
 	int stoppingTime=0;
 	while(n>1) {
 		// check that n won't wrap around
