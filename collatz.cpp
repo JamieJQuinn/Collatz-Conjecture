@@ -49,7 +49,7 @@ void calcMaxStoppingTime(
 	maxN=0;
 
 #ifdef OMP_ENABLED
-#pragma omp parallel for
+#pragma omp parallel for schedule(dynamic)
 #endif
   for(big_int i = N; i<M; ++i) {
 		int stoppingTime = calcStoppingTime(i);
